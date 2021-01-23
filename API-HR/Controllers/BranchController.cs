@@ -172,8 +172,7 @@ namespace API_HR.Controllers
 
                 foreach (var branch in allBranches)
                 {
-                    branches.Add(branch.BranchID, branch.BranchName + " " + branch.Address + " " + branch.City
-                        + " " + branch.PostalCode + " " + branch.Telephone);
+                    branches.Add(branch.BranchID, branch.BranchName);
                 }
                 return branches;
             }
