@@ -13,20 +13,20 @@ using System.Windows.Forms;
 
 namespace Client_HR.Forms
 {
-    public partial class Branches : Form
+    public partial class EmploymentStatusForm : Form
     {
-        public Branches()
+        public EmploymentStatusForm()
         {
             InitializeComponent();
         }
 
         private async void buttonDisplay_Click(object sender, EventArgs e)
         {
-            async Task<string> DisplayBranches()
+            async Task<string> DisplayStatuses()
             {
                 using (HttpClient client = new HttpClient())
                 {
-                    using (HttpResponseMessage res = await client.GetAsync("http://localhost:60973/api/branch"))
+                    using (HttpResponseMessage res = await client.GetAsync("http://localhost:60973/api/status"))
                     {
                         using (HttpContent content = res.Content)
                         {
@@ -41,9 +41,9 @@ namespace Client_HR.Forms
 
             try
             {
-                var response = await DisplayBranches();
-                var records = JsonConvert.DeserializeObject<List<Branch>>(response);
-                dgBranches.DataSource = records;
+                var response = await DisplayStatuses();
+                var records = JsonConvert.DeserializeObject<List<Status>>(response);
+                dgStatuses.DataSource = records;
             }
             catch (HttpRequestException x)
             {
@@ -53,43 +53,36 @@ namespace Client_HR.Forms
 
         private async void buttonInsert_Click(object sender, EventArgs e)
         {
-            async Task<string> InsertBranch()
+            async Task<string> InserStatus()
             {
-                string branchName = textBranchName.Text.Trim();
-                string branchAddress = textAddress.Text;
-                string branchCity = textCity.Text;
-                string branchPostal = textPostalCode.Text;
-                string branchTelephone = textTelephone.Text;
+                string statusName = textStatusName.Text.Trim();
 
-                if (branchName.Length == 0 || branchAddress.Length == 0 || branchCity.Length == 0 ||
-                    branchPostal.Length == 0 || branchTelephone.Length == 0)
+                if (statusName.Length == 0)
                 {
-                    MessageBox.Show("All fields must be filled!");
+                    MessageBox.Show("Employments Status field must be filled!");
                     return null;
                 }
 
                 var filledRecords = new Dictionary<string, string>
                 {
-                    { "BranchName" , branchName  },
-                    { "Address", branchAddress },
-                    { "City", branchCity },
-                    { "PostalCode", branchPostal },
-                    { "Telephone", branchTelephone }
+                    { "StatusName" , statusName }
                 };
 
                 var input = new FormUrlEncodedContent(filledRecords);
 
                 using (HttpClient client = new HttpClient())
                 {
-                    using (HttpResponseMessage res = await client.PostAsync("http://localhost:60973/api/branch", input))
+                    using (HttpResponseMessage res = await client.PostAsync("http://localhost:60973/api/status", input))
                     {
                         using (HttpContent content = res.Content)
                         {
                             string data = await content.ReadAsStringAsync();
 
-                            if (data != null) return data;
-
-                            MessageBox.Show("Branch Succsesfully Created!");
+                            if (data != null)
+                            {
+                                MessageBox.Show("Employment Status Succsesfully Created!");
+                                return data;
+                            }
                         }
                     }
                 }
@@ -98,7 +91,7 @@ namespace Client_HR.Forms
 
             try
             {
-                await InsertBranch();
+                await InserStatus();
             }
             catch (HttpRequestException x)
             {
@@ -112,36 +105,28 @@ namespace Client_HR.Forms
 
         private async void buttonEdit_Click(object sender, EventArgs e)
         {
-            async Task<string> EditBranch()
+            async Task<string> EditStatus()
             {
                 int id = int.Parse(textSearchID.Text.Trim());
 
-                string branchName = textBranchName.Text.Trim();
-                string branchAddress = textAddress.Text;
-                string branchCity = textCity.Text;
-                string branchPostal = textPostalCode.Text;
-                string branchTelephone = textTelephone.Text;
+                string statusName = textStatusName.Text.Trim();
 
-                if (branchName.Length == 0 || branchAddress.Length == 0 || branchCity.Length == 0 || branchPostal.Length == 0 || branchTelephone.Length == 0)
+                if (statusName.Length == 0)
                 {
-                    MessageBox.Show("All fields must be filled!");
+                    MessageBox.Show("Employment Status Name must be filled!");
                     return null;
                 }
 
                 var filledRecords = new Dictionary<string, string>
                 {
-                    { "BranchName" , branchName  },
-                    { "Address", branchAddress },
-                    { "City", branchCity },
-                    { "PostalCode", branchPostal },
-                    { "Telephone", branchTelephone }
+                    { "StatusName" , statusName  }
                 };
 
                 var input = new FormUrlEncodedContent(filledRecords);
 
                 using (HttpClient client = new HttpClient())
                 {
-                    using (HttpResponseMessage res = await client.PutAsync("http://localhost:60973/api/branch/" + id, input))
+                    using (HttpResponseMessage res = await client.PutAsync("http://localhost:60973/api/status/" + id, input))
                     {
                         using (HttpContent content = res.Content)
                         {
@@ -149,9 +134,9 @@ namespace Client_HR.Forms
 
                             if (data != null)
                             {
-                                MessageBox.Show("Branch Succsesfully Edited!");
+                                MessageBox.Show("Employment Status Succsesfully Edited!");
                                 return data;
-                            } 
+                            }
                         }
                     }
                 }
@@ -160,7 +145,7 @@ namespace Client_HR.Forms
 
             try
             {
-                await EditBranch();
+                await EditStatus();
             }
             catch (HttpRequestException x)
             {
@@ -174,13 +159,13 @@ namespace Client_HR.Forms
 
         private async void buttonDelete_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Are You Sure?", "Important - You are deleting branch!", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            if (MessageBox.Show("Are You Sure?", "Important - You are Deleting Status!", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
-                async Task<string> DeleteBranch(int id)
+                async Task<string> DeleteStatus(int id)
                 {
                     using (HttpClient client = new HttpClient())
                     {
-                        using (HttpResponseMessage res = await client.DeleteAsync("http://localhost:60973/api/branch/" + id))
+                        using (HttpResponseMessage res = await client.DeleteAsync("http://localhost:60973/api/status/" + id))
                         {
                             using (HttpContent content = res.Content)
                             {
@@ -188,7 +173,7 @@ namespace Client_HR.Forms
 
                                 if (data != null)
                                 {
-                                    MessageBox.Show("Branch Succsesfully Deleted!");
+                                    MessageBox.Show("Department Succsesfully Deleted!");
                                     return data;
                                 }
                             }
@@ -199,7 +184,7 @@ namespace Client_HR.Forms
 
                 try
                 {
-                    await DeleteBranch(int.Parse(textSearchID.Text.Trim()));
+                    await DeleteStatus(int.Parse(textSearchID.Text.Trim()));
                 }
                 catch (HttpRequestException x)
                 {
@@ -210,22 +195,25 @@ namespace Client_HR.Forms
                     MessageBox.Show(x.Message);
                 }
             }
-            else MessageBox.Show("Branch is NOT deleted!");
+            else
+            {
+                MessageBox.Show("Employment Status is NOT Deleted!");
+            }
         }
 
         private async void buttonSearch_Click(object sender, EventArgs e)
         {
-            async Task<string> SearchBranch(int id)
+            async Task<string> SearchStatus(int id)
             {
                 using (HttpClient client = new HttpClient())
                 {
-                    using (HttpResponseMessage res = await client.GetAsync("http://localhost:60973/api/branch/" + id))
+                    using (HttpResponseMessage res = await client.GetAsync("http://localhost:60973/api/status/" + id))
                     {
                         using (HttpContent content = res.Content)
                         {
                             string data = await content.ReadAsStringAsync();
 
-                            if (data != null) return data;                          
+                            if (data != null) return data;
                         }
                     }
                 }
@@ -234,13 +222,13 @@ namespace Client_HR.Forms
 
             try
             {
-                var response = await SearchBranch(int.Parse(textSearchID.Text.Trim()));
+                var response = await SearchStatus(int.Parse(textSearchID.Text));
 
-                Branch branch = JsonConvert.DeserializeObject<Branch>(response);
-                List<Branch> branchList = new List<Branch>();
-                branchList.Add(branch);
+                Status records = JsonConvert.DeserializeObject<Status>(response);
+                List<Status> deptList = new List<Status>();
+                deptList.Add(records);
 
-                dgBranches.DataSource = branchList;
+                dgStatuses.DataSource = deptList;
             }
             catch (HttpRequestException x)
             {
@@ -253,18 +241,13 @@ namespace Client_HR.Forms
             }
         }
 
-        private void dgBranches_MouseClick_1(object sender, MouseEventArgs e)
+        private void dgStatuses_MouseClick(object sender, MouseEventArgs e)
         {
-            if (dgBranches.CurrentRow.Index != -1)
+            if (dgStatuses.CurrentRow.Index != -1)
             {
-                textSearchID.Text = (Convert.ToInt32(dgBranches.CurrentRow.Cells["branchId"].Value)).ToString();
-                textBranchName.Text = (string)dgBranches.CurrentRow.Cells["branch"].Value.ToString();
-                textAddress.Text = (string)dgBranches.CurrentRow.Cells["address"].Value.ToString();
-                textCity.Text = (string)dgBranches.CurrentRow.Cells["city"].Value.ToString();
-                textPostalCode.Text = (string)dgBranches.CurrentRow.Cells["postal"].Value.ToString();
-                textTelephone.Text = (string)dgBranches.CurrentRow.Cells["telephone"].Value.ToString();
+                textSearchID.Text = (Convert.ToInt32(dgStatuses.CurrentRow.Cells["employmentStatusID"].Value)).ToString();
+                textStatusName.Text = (string)dgStatuses.CurrentRow.Cells["statusName"].Value.ToString();
             }
         }
     }
 }
-

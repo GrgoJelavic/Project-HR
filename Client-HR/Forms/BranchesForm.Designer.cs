@@ -46,12 +46,6 @@ namespace Client_HR.Forms
             this.textAddress = new System.Windows.Forms.TextBox();
             this.textBranchName = new System.Windows.Forms.TextBox();
             this.dgBranches = new System.Windows.Forms.DataGridView();
-            this.dgBranchID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgBranchName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgAddress = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgCity = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgPostalCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgTelephone = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgBranches)).BeginInit();
             this.SuspendLayout();
             // 
@@ -91,7 +85,7 @@ namespace Client_HR.Forms
             // textSearchID
             // 
             this.textSearchID.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textSearchID.Location = new System.Drawing.Point(326, 262);
+            this.textSearchID.Location = new System.Drawing.Point(326, 267);
             this.textSearchID.Name = "textSearchID";
             this.textSearchID.Size = new System.Drawing.Size(203, 40);
             this.textSearchID.TabIndex = 64;
@@ -211,67 +205,13 @@ namespace Client_HR.Forms
             // dgBranches
             // 
             this.dgBranches.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgBranches.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dgBranchID,
-            this.dgBranchName,
-            this.dgAddress,
-            this.dgCity,
-            this.dgPostalCode,
-            this.dgTelephone});
             this.dgBranches.Location = new System.Drawing.Point(549, 80);
             this.dgBranches.Name = "dgBranches";
             this.dgBranches.RowHeadersWidth = 82;
             this.dgBranches.RowTemplate.Height = 33;
             this.dgBranches.Size = new System.Drawing.Size(1101, 946);
             this.dgBranches.TabIndex = 51;
-            // 
-            // dgBranchID
-            // 
-            this.dgBranchID.DataPropertyName = "BranchID";
-            this.dgBranchID.HeaderText = "ID";
-            this.dgBranchID.MinimumWidth = 10;
-            this.dgBranchID.Name = "dgBranchID";
-            this.dgBranchID.Width = 40;
-            // 
-            // dgBranchName
-            // 
-            this.dgBranchName.DataPropertyName = "BranchName";
-            this.dgBranchName.HeaderText = "Branch";
-            this.dgBranchName.MinimumWidth = 10;
-            this.dgBranchName.Name = "dgBranchName";
-            this.dgBranchName.Width = 80;
-            // 
-            // dgAddress
-            // 
-            this.dgAddress.DataPropertyName = "BranchAddress";
-            this.dgAddress.HeaderText = "Address";
-            this.dgAddress.MinimumWidth = 10;
-            this.dgAddress.Name = "dgAddress";
-            this.dgAddress.Width = 120;
-            // 
-            // dgCity
-            // 
-            this.dgCity.DataPropertyName = "BranchCity";
-            this.dgCity.HeaderText = "City";
-            this.dgCity.MinimumWidth = 10;
-            this.dgCity.Name = "dgCity";
-            this.dgCity.Width = 80;
-            // 
-            // dgPostalCode
-            // 
-            this.dgPostalCode.DataPropertyName = "BranchPostal";
-            this.dgPostalCode.HeaderText = "Postal";
-            this.dgPostalCode.MinimumWidth = 10;
-            this.dgPostalCode.Name = "dgPostalCode";
-            this.dgPostalCode.Width = 80;
-            // 
-            // dgTelephone
-            // 
-            this.dgTelephone.DataPropertyName = "BranchTelephone";
-            this.dgTelephone.HeaderText = "Telephone";
-            this.dgTelephone.MinimumWidth = 10;
-            this.dgTelephone.Name = "dgTelephone";
-            this.dgTelephone.Width = 80;
+            this.dgBranches.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dgBranches_MouseClick_1);
             // 
             // Branches
             // 
@@ -322,11 +262,5 @@ namespace Client_HR.Forms
         private System.Windows.Forms.TextBox textAddress;
         private System.Windows.Forms.TextBox textBranchName;
         private System.Windows.Forms.DataGridView dgBranches;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgBranchID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgBranchName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgAddress;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgCity;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgPostalCode;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgTelephone;
     }
 }

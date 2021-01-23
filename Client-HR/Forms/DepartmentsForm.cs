@@ -25,7 +25,9 @@ namespace Client_HR.Forms
                     {
                         using (HttpContent content = res.Content)
                         {
-                            string statusCode = res.StatusCode.ToString() + " - " + ((int)res.StatusCode).ToString();
+                            //string statusCode = res.StatusCode.ToString() + " - " + ((int)res.StatusCode).ToString();
+                            //MessageBox.Show(statusCode);
+
                             string data = await content.ReadAsStringAsync();
 
                             if (data != null) return data;
@@ -54,7 +56,7 @@ namespace Client_HR.Forms
 
                 if (deptName.Length == 0)
                 {
-                    MessageBox.Show("All fields must be filled!");
+                    MessageBox.Show("Department Name field must be filled!");
                     return null;
                 }
 
@@ -71,12 +73,14 @@ namespace Client_HR.Forms
                     {
                         using (HttpContent content = res.Content)
                         {
-                            string statusCode = res.StatusCode.ToString() + " - " + ((int)res.StatusCode).ToString();
+                            //string statusCode = res.StatusCode.ToString() + " - " + ((int)res.StatusCode).ToString();
+                            //MessageBox.Show(statusCode);
 
                             string data = await content.ReadAsStringAsync();
 
                             if (data != null)
                             {
+                                MessageBox.Show("Department Succsesfully Created!");
                                 return data;
                             }
                         }
@@ -126,12 +130,11 @@ namespace Client_HR.Forms
                     {
                         using (HttpContent content = res.Content)
                         {
-                            string statusCode = res.StatusCode.ToString() + " - " + ((int)res.StatusCode).ToString();
-
                             string data = await content.ReadAsStringAsync();
 
                             if (data != null)
                             {
+                                MessageBox.Show("Department Succsesfully Edited!");
                                 return data;
                             }
                         }
@@ -156,7 +159,7 @@ namespace Client_HR.Forms
 
         private async void buttonDelete_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Are You Sure?", "Important - You are deleting branch!", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            if (MessageBox.Show("Are You Sure?", "Important - You are Deleting Department!", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
                 async Task<string> DeleteDepartment(int id)
                 {
@@ -166,12 +169,11 @@ namespace Client_HR.Forms
                         {
                             using (HttpContent content = res.Content)
                             {
-                                string statusCode = res.StatusCode.ToString() + " - " + ((int)res.StatusCode).ToString();
-
                                 string data = await content.ReadAsStringAsync();
 
                                 if (data != null)
                                 {
+                                    MessageBox.Show("Department Succsesfully Deleted!");
                                     return data;
                                 }
                             }
@@ -192,7 +194,6 @@ namespace Client_HR.Forms
                 {
                     MessageBox.Show(x.Message);
                 }
-                MessageBox.Show("Department is Deleted!");
             }
             else
             {
@@ -210,14 +211,9 @@ namespace Client_HR.Forms
                     {
                         using (HttpContent content = res.Content)
                         {
-                            string statusCode = res.StatusCode.ToString() + " - " + ((int)res.StatusCode).ToString();
-
                             string data = await content.ReadAsStringAsync();
 
-                            if (data != null)
-                            {
-                                return data;
-                            }
+                            if (data != null) return data;                         
                         }
                     }
                 }
@@ -245,5 +241,13 @@ namespace Client_HR.Forms
             }
         }
 
+        private void dgDepartments_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (dgDepartments.CurrentRow.Index != -1)
+            {
+                textSearchID.Text = (Convert.ToInt32(dgDepartments.CurrentRow.Cells["departmentId"].Value)).ToString();
+                textDepartmentName.Text = (string)dgDepartments.CurrentRow.Cells["departmentName"].Value.ToString();
+            }
+        }
     }
 }

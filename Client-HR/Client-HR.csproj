@@ -61,6 +61,24 @@
     <Compile Include="Forms\DepartmentsForm.Designer.cs">
       <DependentUpon>DepartmentsForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\EmployeesForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\EmployeesForm.Designer.cs">
+      <DependentUpon>EmployeesForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\EmploymentStatusForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\EmploymentStatusForm.Designer.cs">
+      <DependentUpon>EmploymentStatusForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\JobTitlesForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\JobTitlesForm.Designer.cs">
+      <DependentUpon>JobTitlesForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Models\Branch.cs" />
     <Compile Include="Models\Department.cs" />
     <Compile Include="Models\Employee.cs" />
@@ -73,6 +91,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\DepartmentsForm.resx">
       <DependentUpon>DepartmentsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\EmployeesForm.resx">
+      <DependentUpon>EmployeesForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\EmploymentStatusForm.resx">
+      <DependentUpon>EmploymentStatusForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\JobTitlesForm.resx">
+      <DependentUpon>JobTitlesForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

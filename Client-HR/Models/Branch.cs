@@ -10,14 +10,14 @@ namespace Client_HR.Models
     {
         public int branchId { get; set; }
 
-        public string branchName { get; set; }
+        public string branch{ get; set; }
 
-        public string branchAddress { get; set; }
+        public string address { get; set; }
 
-        public string branchCity { get; set; }
+        public string city { get; set; }
 
-        public string branchPostal { get; set; }
+        public string postal { get; set; }
 
-        public string branchTelephone { get; set; }
+        public string telephone { get; set; }
     }
 }
