@@ -25,11 +25,11 @@ namespace API_HR.Controllers
                 {
                     var br = new BranchBO();
                     br.branchId = branch.BranchID;
-                    br.branchName = branch.BranchName;
-                    br.branchAddress = branch.Address;
-                    br.branchCity = branch.City;
-                    br.branchPostal = branch.PostalCode;
-                    br.branchTelephone = branch.Telephone;
+                    br.branch = branch.BranchName;
+                    br.address = branch.Address;
+                    br.city = branch.City;
+                    br.postal = branch.PostalCode;
+                    br.telephone = branch.Telephone;
 
                     branchList.Add(br);
                 }
@@ -52,11 +52,11 @@ namespace API_HR.Controllers
 
                 var br = new BranchBO();
                 br.branchId = branch.BranchID;
-                br.branchName = branch.BranchName;
-                br.branchAddress = branch.Address;
-                br.branchCity = branch.City;
-                br.branchPostal = branch.PostalCode;
-                br.branchTelephone = branch.Telephone;
+                br.branch = branch.BranchName;
+                br.address = branch.Address;
+                br.city = branch.City;
+                br.postal = branch.PostalCode;
+                br.telephone = branch.Telephone;
 
                 return br;
             }
