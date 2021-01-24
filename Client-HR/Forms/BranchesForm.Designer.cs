@@ -46,6 +46,7 @@ namespace Client_HR.Forms
             this.textAddress = new System.Windows.Forms.TextBox();
             this.textBranchName = new System.Windows.Forms.TextBox();
             this.dgBranches = new System.Windows.Forms.DataGridView();
+            this.buttonBranchEmployees = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgBranches)).BeginInit();
             this.SuspendLayout();
             // 
@@ -85,9 +86,9 @@ namespace Client_HR.Forms
             // textSearchID
             // 
             this.textSearchID.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textSearchID.Location = new System.Drawing.Point(326, 267);
+            this.textSearchID.Location = new System.Drawing.Point(189, 262);
             this.textSearchID.Name = "textSearchID";
-            this.textSearchID.Size = new System.Drawing.Size(203, 40);
+            this.textSearchID.Size = new System.Drawing.Size(133, 40);
             this.textSearchID.TabIndex = 64;
             // 
             // buttonSearch
@@ -95,9 +96,9 @@ namespace Client_HR.Forms
             this.buttonSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonSearch.Location = new System.Drawing.Point(13, 256);
             this.buttonSearch.Name = "buttonSearch";
-            this.buttonSearch.Size = new System.Drawing.Size(259, 51);
+            this.buttonSearch.Size = new System.Drawing.Size(151, 51);
             this.buttonSearch.TabIndex = 63;
-            this.buttonSearch.Text = "SEARCH by ID";
+            this.buttonSearch.Text = "Get by ID:";
             this.buttonSearch.UseVisualStyleBackColor = true;
             this.buttonSearch.Click += new System.EventHandler(this.buttonSearch_Click);
             // 
@@ -213,11 +214,23 @@ namespace Client_HR.Forms
             this.dgBranches.TabIndex = 51;
             this.dgBranches.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dgBranches_MouseClick_1);
             // 
+            // buttonBranchEmployees
+            // 
+            this.buttonBranchEmployees.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonBranchEmployees.Location = new System.Drawing.Point(348, 256);
+            this.buttonBranchEmployees.Name = "buttonBranchEmployees";
+            this.buttonBranchEmployees.Size = new System.Drawing.Size(181, 51);
+            this.buttonBranchEmployees.TabIndex = 68;
+            this.buttonBranchEmployees.Text = "Employees";
+            this.buttonBranchEmployees.UseVisualStyleBackColor = true;
+            this.buttonBranchEmployees.Click += new System.EventHandler(this.buttonBranchEmployees_Click);
+            // 
             // Branches
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1682, 1038);
+            this.Controls.Add(this.buttonBranchEmployees);
             this.Controls.Add(this.buttonDelete);
             this.Controls.Add(this.buttonEdit);
             this.Controls.Add(this.buttonInsert);
@@ -262,5 +275,6 @@ namespace Client_HR.Forms
         private System.Windows.Forms.TextBox textAddress;
         private System.Windows.Forms.TextBox textBranchName;
         private System.Windows.Forms.DataGridView dgBranches;
+        private System.Windows.Forms.Button buttonBranchEmployees;
     }
 }

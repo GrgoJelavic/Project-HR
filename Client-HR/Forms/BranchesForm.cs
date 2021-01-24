@@ -151,7 +151,7 @@ namespace Client_HR.Forms
                             {
                                 MessageBox.Show("Branch Succsesfully Edited!");
                                 return data;
-                            } 
+                            }
                         }
                     }
                 }
@@ -225,7 +225,7 @@ namespace Client_HR.Forms
                         {
                             string data = await content.ReadAsStringAsync();
 
-                            if (data != null) return data;                          
+                            if (data != null) return data;
                         }
                     }
                 }
@@ -263,6 +263,47 @@ namespace Client_HR.Forms
                 textCity.Text = (string)dgBranches.CurrentRow.Cells["city"].Value.ToString();
                 textPostalCode.Text = (string)dgBranches.CurrentRow.Cells["postal"].Value.ToString();
                 textTelephone.Text = (string)dgBranches.CurrentRow.Cells["telephone"].Value.ToString();
+            }
+        }
+
+        private async void buttonBranchEmployees_Click(object sender, EventArgs e)
+        {
+            async Task<string> BranchEmployees(int id)
+            {
+                using (HttpClient client = new HttpClient())
+                {
+                    using (HttpResponseMessage res = await client.GetAsync("http://localhost:60973/api/employee"))
+                    {
+                        using (HttpContent content = res.Content)
+                        {
+                            string data = await content.ReadAsStringAsync();
+
+                            if (data != null) return data;
+                        }
+                    }
+                }
+                return string.Empty;
+            }
+
+            try
+            {
+                var response = await BranchEmployees(int.Parse(textSearchID.Text.Trim()));
+
+                var employee = JsonConvert.DeserializeObject<List<EmployeeFull>>(response);
+
+                var banchEmployees = employee.Where(x => x.branchId == int.Parse(textSearchID.Text)).ToList();
+                    
+
+                dgBranches.DataSource = banchEmployees;
+            }
+            catch (HttpRequestException x)
+            {
+                MessageBox.Show(x.Message);
+            }
+
+            catch (System.FormatException x)
+            {
+                MessageBox.Show(x.Message);
             }
         }
     }

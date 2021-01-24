@@ -33,7 +33,6 @@ namespace API_HR.Controllers
                               join dept in db.Departments on empl.DepartmentID equals dept.DepartmentID
                               join title in db.JobTitles on empl.JobTitleID equals title.JobTitleID
                               join status in db.EmploymentStatuses on empl.EmploymentStatusID equals status.EmploymentStatusID
-
                               select new
                               {
                                   empl.EmployeeID,
@@ -87,7 +86,7 @@ namespace API_HR.Controllers
                         departmentName = elem.department,
                         jobTitleId = elem.titleID.Value,
                         jobTitleName = elem.tel,
-                        employmentStatusId = elem.statusID.GetValueOrDefault(),
+                        employmentStatusId = elem.statusID.Value,
                         employmentStatusName = elem.status
                     });
                 };
@@ -108,9 +107,7 @@ namespace API_HR.Controllers
                               join dept in db.Departments on empl.DepartmentID equals dept.DepartmentID
                               join title in db.JobTitles on empl.JobTitleID equals title.JobTitleID
                               join status in db.EmploymentStatuses on empl.EmploymentStatusID equals status.EmploymentStatusID
-
                               where empl.EmployeeID == id
-
                               select new
                               {
                                   empl.EmployeeID,
@@ -164,8 +161,8 @@ namespace API_HR.Controllers
                         departmentId = elem.deptID.Value,
                         departmentName = elem.department,
                         jobTitleId = elem.titleID.Value,
-                        jobTitleName = elem.tel,
-                        employmentStatusId = elem.statusID.GetValueOrDefault(),
+                        jobTitleName = elem.title,
+                        employmentStatusId = elem.statusID.Value,
                         employmentStatusName = elem.status
                     });
                 };
@@ -182,24 +179,7 @@ namespace API_HR.Controllers
                 try
                 {
                     var result = (from row in db.Employees
-                                  where row.FirstName == employee.FirstName
-                                  && row.LastName == employee.LastName
-                                  && row.OIB == employee.OIB
-                                  && row.Gender == employee.Gender
-                                  && row.BirthdayDate == employee.BirthdayDate
-                                  && row.HomeAdress == employee.HomeAdress
-                                  && row.City == employee.City
-                                  && row.PostalCode == employee.PostalCode
-                                  && row.Telephone == employee.Telephone
-                                  && row.Mobile == employee.Mobile
-                                  && row.Email == employee.Email
-                                  && row.BranchID == employee.BranchID
-                                  && row.EmploymentDate == employee.EmploymentDate
-                                  && row.Salary == employee.Salary
-                                  && row.DepartmentID == employee.DepartmentID
-                                  && row.JobTitleID == employee.JobTitleID
-                                  && row.EmploymentStatusID == employee.EmploymentStatusID
-
+                                  where row.OIB == employee.OIB
                                   select row).ToList();
 
                     if (result.Count != 0) return StatusCode((HttpStatusCode)409);
@@ -228,23 +208,7 @@ namespace API_HR.Controllers
                     if (resultCheck.Count == 0) return NotFound();
 
                     var result = (from row in db.Employees
-                                  where row.FirstName == employee.FirstName
-                                   && row.LastName == employee.LastName
-                                   && row.OIB == employee.OIB
-                                   && row.Gender == employee.Gender
-                                   && row.BirthdayDate == employee.BirthdayDate
-                                   && row.HomeAdress == employee.HomeAdress
-                                   && row.City == employee.City
-                                   && row.PostalCode == employee.PostalCode
-                                   && row.Telephone == employee.Telephone
-                                   && row.Mobile == employee.Mobile
-                                   && row.Email == employee.Email
-                                   && row.EmploymentDate == employee.EmploymentDate
-                                   && row.Salary == employee.Salary
-                                   && row.BranchID == employee.BranchID
-                                   && row.DepartmentID == employee.DepartmentID
-                                   && row.JobTitleID == employee.JobTitleID
-                                   && row.EmploymentStatusID == employee.EmploymentStatusID
+                                  where row.OIB == employee.OIB
                                   select row).ToList();
 
                     if (result.Count != 0) return StatusCode((HttpStatusCode)409);
