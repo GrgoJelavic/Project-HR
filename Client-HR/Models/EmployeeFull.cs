@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 
 namespace Client_HR.Models
 {
-    class Employee
+    class EmployeeFull
     {
         public int employeeId { get; set; }
 
         public string firstName { get; set; }
 
-        public string LastName { get; set; }
+        public string lastName { get; set; }
 
         public long oib { get; set; }
 
@@ -34,21 +34,20 @@ namespace Client_HR.Models
 
         public string email { get; set; }
 
-        public long branchId { get; set; }
+
+        public int branchId { get; set; }
 
         public string branchName { get; set; }
 
-        public long departmentId { get; set; }
+        public int departmentId { get; set; }
 
-       public string departmentName { get; set; }
+        public string departmentName { get; set; }
 
-
-        public long employmentStatusId { get; set; }
+        public int employmentStatusId { get; set; }
 
         public string employmentStatusName { get; set; }
 
-
-        public long jobTitleId { get; set; }
+        public int jobTitleId { get; set; }
 
         public string jobTitleName { get; set; }
 

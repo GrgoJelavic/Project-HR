@@ -377,7 +377,7 @@ namespace Client_HR.Forms
 
                 using (HttpClient client = new HttpClient())
                 {
-                    using (HttpResponseMessage res = await client.PostAsync("http://localhost:60973/api/employee", input))
+                    using (HttpResponseMessage res = await client.PostAsync("http://localhost:60973/api/employee/", input))
                     {
                         using (HttpContent content = res.Content)
                         {
@@ -566,11 +566,11 @@ namespace Client_HR.Forms
             {
                 var response = await SearchEmmployee(textSearchID.Text.Trim());
 
-                var records = JsonConvert.DeserializeObject<Employee>(response);
-                List<Employee> employeeList = new List<Employee>();
-                employeeList.Add(records);
-
-                dgEmployees.DataSource = employeeList;
+                var records = JsonConvert.DeserializeObject<List<Employee>>(response);
+                dgEmployees.DataSource = records;
+                //List<Employee> employeeList = new List<Employee>();
+                //employeeList.Add(records);
+                //dgEmployees.DataSource = employeeList;
             }
             catch (HttpRequestException x)
             {
@@ -581,6 +581,7 @@ namespace Client_HR.Forms
                 MessageBox.Show(x.Message);
             }
         }
+
 
         private void dgEmployees_MouseClick(object sender, MouseEventArgs e)
         {
@@ -598,13 +599,9 @@ namespace Client_HR.Forms
                 textTelephone.Text = (string)dgEmployees.CurrentRow.Cells["telephone"].Value.ToString();
                 textMobile.Text = (string)dgEmployees.CurrentRow.Cells["mobile"].Value.ToString();
                 textEmail.Text = (string)dgEmployees.CurrentRow.Cells["email"].Value.ToString();
-                //boxBranch.Text = Convert.ToInt64(dgEmployees.CurrentRow.Cells["branchId"].Value).ToString();
                 textBranchID.Text = Convert.ToInt64(dgEmployees.CurrentRow.Cells["branchId"].Value).ToString();
-                //boxDepartment.Text = Convert.ToInt64(dgEmployees.CurrentRow.Cells["departmentId"].Value).ToString();
                 textDepartmentID.Text = Convert.ToInt64(dgEmployees.CurrentRow.Cells["departmentId"].Value).ToString();
-                // boxEmploymentStatus.ValueMember = Convert.ToInt64(dgEmployees.CurrentRow.Cells["employmentStatusId"].Value).ToString();
                 textStatusID.Text = Convert.ToInt64(dgEmployees.CurrentRow.Cells["employmentStatusId"].Value).ToString();
-                //boxJobTitle.Text = Convert.ToInt64(dgEmployees.CurrentRow.Cells["jobTitleId"].Value).ToString();
                 textTitleID.Text = Convert.ToInt64(dgEmployees.CurrentRow.Cells["jobTitleId"].Value).ToString();
                 textSalary.Text = (string)dgEmployees.CurrentRow.Cells["salary"].Value.ToString();
                 dateEmployment.Text = (string)dgEmployees.CurrentRow.Cells["employmentDate"].Value.ToString();

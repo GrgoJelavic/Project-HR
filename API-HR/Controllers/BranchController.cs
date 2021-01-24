@@ -1,5 +1,6 @@
 ﻿using API_HR.BO;
 using API_HR.Models;
+using API_HR.ModelsFull;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity.Validation;
@@ -177,5 +178,6 @@ namespace API_HR.Controllers
                 return branches;
             }
         }
+
     }
 }
