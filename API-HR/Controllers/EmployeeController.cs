@@ -36,7 +36,6 @@ namespace API_HR.Controllers
                               select new
                               {
                                   empl.EmployeeID,
-                                  //id = empl.EmployeeID,
                                   fName = empl.FirstName,
                                   lName = empl.LastName,
                                   oib = empl.OIB,
@@ -111,7 +110,6 @@ namespace API_HR.Controllers
                               select new
                               {
                                   empl.EmployeeID,
-                                  //id = empl.EmployeeID,
                                   fName = empl.FirstName,
                                   lName = empl.LastName,
                                   oib = empl.OIB,
@@ -272,5 +270,6 @@ namespace API_HR.Controllers
                 }
             }
         }
+
     }
 }

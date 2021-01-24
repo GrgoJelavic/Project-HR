@@ -1,15 +1,19 @@
 ﻿using Client_HR.Models;
+using iTextSharp.text;
+using iTextSharp.text.pdf;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Font = iTextSharp.text.Font;
 
 namespace Client_HR.Forms
 {
@@ -568,9 +572,6 @@ namespace Client_HR.Forms
 
                 var records = JsonConvert.DeserializeObject<List<Employee>>(response);
                 dgEmployees.DataSource = records;
-                //List<Employee> employeeList = new List<Employee>();
-                //employeeList.Add(records);
-                //dgEmployees.DataSource = employeeList;
             }
             catch (HttpRequestException x)
             {
@@ -606,6 +607,82 @@ namespace Client_HR.Forms
                 textSalary.Text = (string)dgEmployees.CurrentRow.Cells["salary"].Value.ToString();
                 dateEmployment.Text = (string)dgEmployees.CurrentRow.Cells["employmentDate"].Value.ToString();
             }
+        }
+
+        private void buttonPdf_Click_1(object sender, EventArgs e)
+        {
+            void ExportToPdf()
+            {
+                var pdfDoc = new Document(new iTextSharp.text.Rectangle(288f, 144f), 5, 5, 5, 5);
+                pdfDoc.SetPageSize(iTextSharp.text.PageSize.A4.Rotate());
+
+                string path = $"C:\\PDF-HR\\PDF reports\\employees.pdf";
+
+                PdfWriter.GetInstance(pdfDoc, new FileStream(path, FileMode.OpenOrCreate));
+                pdfDoc.Open();
+
+                var title = new Paragraph(" .NET Project - Human Resources ");
+                pdfDoc.Add(title);
+
+                var spacer = new Paragraph("")
+                {
+                    SpacingBefore = 10f,
+                    SpacingAfter = 10f,
+                };
+
+                pdfDoc.Add(spacer);
+
+                var headerTable = new PdfPTable(new[] { .75f, 2f })
+                {
+                    HorizontalAlignment = Left,
+                    WidthPercentage = 75,
+                    DefaultCell = { MinimumHeight = 22f }
+                };
+
+                pdfDoc.Add(headerTable);
+                pdfDoc.Add(spacer);
+
+                var columnCount = dgEmployees.ColumnCount;
+                var columnWidths = new[] { 0.8f, 0.8f, 0.8f, 0.8f, 0.8f, 0.8f, 0.8f, 0.8f, 0.8f, 0.8f, 0.8f, 0.8f, 0.8f, 0.8f, 0.8f, 0.8f, 0.8f, 0.8f, 0.8f, 0.8f, 0.8f, 0.8f, 0.8f };
+
+                var table = new PdfPTable(columnWidths)
+                {
+                    HorizontalAlignment = Left,
+                    WidthPercentage = 100,
+                    DefaultCell = { MinimumHeight = 22f }
+                };
+
+                var cell = new PdfPCell(new Phrase("Employees list"))
+                {
+                    Colspan = columnCount,
+                    HorizontalAlignment = 1,
+                    MinimumHeight = 30f
+                };
+
+                table.AddCell(cell);
+
+                //header
+                dgEmployees.Columns
+                    .OfType<DataGridViewColumn>()
+                    .ToList()
+                    .ForEach(c => table.AddCell(c.Name));
+
+                // rows
+                dgEmployees.Rows
+                    .OfType<DataGridViewRow>()
+                    .ToList()
+                    .ForEach(r =>
+                    {
+                        var cells = r.Cells.OfType<DataGridViewCell>().ToList();
+                        cells.ForEach(c => table.AddCell(c.Value.ToString()));
+                    });
+
+                pdfDoc.Add(table);
+
+                pdfDoc.Close();
+                System.Diagnostics.Process.Start(path);
+            }
+            ExportToPdf();
         }
     }
 }

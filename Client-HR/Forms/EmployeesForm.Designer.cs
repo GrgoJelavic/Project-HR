@@ -80,6 +80,7 @@ namespace Client_HR.Forms
             this.textDepartmentID = new System.Windows.Forms.TextBox();
             this.label22 = new System.Windows.Forms.Label();
             this.textBranchID = new System.Windows.Forms.TextBox();
+            this.buttonPdf = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgEmployees)).BeginInit();
             this.SuspendLayout();
             // 
@@ -107,7 +108,7 @@ namespace Client_HR.Forms
             // dgEmployees
             // 
             this.dgEmployees.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgEmployees.Location = new System.Drawing.Point(120, 38);
+            this.dgEmployees.Location = new System.Drawing.Point(120, 80);
             this.dgEmployees.Name = "dgEmployees";
             this.dgEmployees.RowHeadersWidth = 82;
             this.dgEmployees.RowTemplate.Height = 33;
@@ -628,12 +629,23 @@ namespace Client_HR.Forms
             this.textBranchID.Size = new System.Drawing.Size(52, 44);
             this.textBranchID.TabIndex = 163;
             // 
+            // buttonPdf
+            // 
+            this.buttonPdf.Location = new System.Drawing.Point(1240, 12);
+            this.buttonPdf.Name = "buttonPdf";
+            this.buttonPdf.Size = new System.Drawing.Size(363, 51);
+            this.buttonPdf.TabIndex = 164;
+            this.buttonPdf.Text = "PDF";
+            this.buttonPdf.UseVisualStyleBackColor = true;
+            this.buttonPdf.Click += new System.EventHandler(this.buttonPdf_Click_1);
+            // 
             // EmployeesForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(1802, 1947);
+            this.Controls.Add(this.buttonPdf);
             this.Controls.Add(this.label22);
             this.Controls.Add(this.textBranchID);
             this.Controls.Add(this.label21);
@@ -747,5 +759,6 @@ namespace Client_HR.Forms
         private System.Windows.Forms.TextBox textDepartmentID;
         private System.Windows.Forms.Label label22;
         private System.Windows.Forms.TextBox textBranchID;
+        private System.Windows.Forms.Button buttonPdf;
     }
 }

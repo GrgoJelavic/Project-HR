@@ -178,6 +178,5 @@ namespace API_HR.Controllers
                 return branches;
             }
         }
-
     }
 }

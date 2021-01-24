@@ -47,6 +47,7 @@ namespace Client_HR.Forms
             this.textBranchName = new System.Windows.Forms.TextBox();
             this.dgBranches = new System.Windows.Forms.DataGridView();
             this.buttonBranchEmployees = new System.Windows.Forms.Button();
+            this.buttonPdf = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgBranches)).BeginInit();
             this.SuspendLayout();
             // 
@@ -105,11 +106,11 @@ namespace Client_HR.Forms
             // buttonDisplay
             // 
             this.buttonDisplay.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonDisplay.Location = new System.Drawing.Point(13, 146);
+            this.buttonDisplay.Location = new System.Drawing.Point(13, 166);
             this.buttonDisplay.Name = "buttonDisplay";
             this.buttonDisplay.Size = new System.Drawing.Size(518, 51);
             this.buttonDisplay.TabIndex = 62;
-            this.buttonDisplay.Text = "DISPLAY LIST";
+            this.buttonDisplay.Text = "DISPLAY BRANCHES";
             this.buttonDisplay.UseVisualStyleBackColor = true;
             this.buttonDisplay.Click += new System.EventHandler(this.buttonDisplay_Click);
             // 
@@ -206,7 +207,7 @@ namespace Client_HR.Forms
             // dgBranches
             // 
             this.dgBranches.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgBranches.Location = new System.Drawing.Point(549, 80);
+            this.dgBranches.Location = new System.Drawing.Point(549, 106);
             this.dgBranches.Name = "dgBranches";
             this.dgBranches.RowHeadersWidth = 82;
             this.dgBranches.RowTemplate.Height = 33;
@@ -225,11 +226,22 @@ namespace Client_HR.Forms
             this.buttonBranchEmployees.UseVisualStyleBackColor = true;
             this.buttonBranchEmployees.Click += new System.EventHandler(this.buttonBranchEmployees_Click);
             // 
+            // buttonPdf
+            // 
+            this.buttonPdf.Location = new System.Drawing.Point(1287, 30);
+            this.buttonPdf.Name = "buttonPdf";
+            this.buttonPdf.Size = new System.Drawing.Size(363, 51);
+            this.buttonPdf.TabIndex = 69;
+            this.buttonPdf.Text = "PDF";
+            this.buttonPdf.UseVisualStyleBackColor = true;
+            this.buttonPdf.Click += new System.EventHandler(this.buttonPdf_Click);
+            // 
             // Branches
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1682, 1038);
+            this.ClientSize = new System.Drawing.Size(1682, 1072);
+            this.Controls.Add(this.buttonPdf);
             this.Controls.Add(this.buttonBranchEmployees);
             this.Controls.Add(this.buttonDelete);
             this.Controls.Add(this.buttonEdit);
@@ -276,5 +288,6 @@ namespace Client_HR.Forms
         private System.Windows.Forms.TextBox textBranchName;
         private System.Windows.Forms.DataGridView dgBranches;
         private System.Windows.Forms.Button buttonBranchEmployees;
+        private System.Windows.Forms.Button buttonPdf;
     }
 }
