@@ -38,6 +38,7 @@ namespace Client_HR.Forms
             this.buttonInsert = new System.Windows.Forms.Button();
             this.textJobTitleName = new System.Windows.Forms.TextBox();
             this.dgJobTitles = new System.Windows.Forms.DataGridView();
+            this.buttonPdf = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgJobTitles)).BeginInit();
             this.SuspendLayout();
             // 
@@ -125,7 +126,7 @@ namespace Client_HR.Forms
             // dgJobTitles
             // 
             this.dgJobTitles.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgJobTitles.Location = new System.Drawing.Point(653, 77);
+            this.dgJobTitles.Location = new System.Drawing.Point(651, 115);
             this.dgJobTitles.Name = "dgJobTitles";
             this.dgJobTitles.RowHeadersWidth = 82;
             this.dgJobTitles.RowTemplate.Height = 33;
@@ -133,11 +134,22 @@ namespace Client_HR.Forms
             this.dgJobTitles.TabIndex = 42;
             this.dgJobTitles.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dgJobTitles_MouseClick);
             // 
+            // buttonPdf
+            // 
+            this.buttonPdf.Location = new System.Drawing.Point(944, 34);
+            this.buttonPdf.Name = "buttonPdf";
+            this.buttonPdf.Size = new System.Drawing.Size(363, 51);
+            this.buttonPdf.TabIndex = 72;
+            this.buttonPdf.Text = "PDF";
+            this.buttonPdf.UseVisualStyleBackColor = true;
+            this.buttonPdf.Click += new System.EventHandler(this.buttonPdf_Click);
+            // 
             // JobTitlesForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1414, 874);
+            this.Controls.Add(this.buttonPdf);
             this.Controls.Add(this.textSearchID);
             this.Controls.Add(this.buttonSearch);
             this.Controls.Add(this.buttonDisplay);
@@ -166,5 +178,6 @@ namespace Client_HR.Forms
         private System.Windows.Forms.Button buttonInsert;
         private System.Windows.Forms.TextBox textJobTitleName;
         private System.Windows.Forms.DataGridView dgJobTitles;
+        private System.Windows.Forms.Button buttonPdf;
     }
 }

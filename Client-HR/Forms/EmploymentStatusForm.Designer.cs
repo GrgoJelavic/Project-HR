@@ -38,6 +38,7 @@ namespace Client_HR.Forms
             this.buttonInsert = new System.Windows.Forms.Button();
             this.textStatusName = new System.Windows.Forms.TextBox();
             this.dgStatuses = new System.Windows.Forms.DataGridView();
+            this.buttonPdf = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgStatuses)).BeginInit();
             this.SuspendLayout();
             // 
@@ -133,11 +134,22 @@ namespace Client_HR.Forms
             this.dgStatuses.TabIndex = 42;
             this.dgStatuses.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dgStatuses_MouseClick);
             // 
+            // buttonPdf
+            // 
+            this.buttonPdf.Location = new System.Drawing.Point(951, 50);
+            this.buttonPdf.Name = "buttonPdf";
+            this.buttonPdf.Size = new System.Drawing.Size(363, 51);
+            this.buttonPdf.TabIndex = 71;
+            this.buttonPdf.Text = "PDF";
+            this.buttonPdf.UseVisualStyleBackColor = true;
+            this.buttonPdf.Click += new System.EventHandler(this.buttonPdf_Click);
+            // 
             // EmploymentStatusForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1506, 1014);
+            this.Controls.Add(this.buttonPdf);
             this.Controls.Add(this.textSearchID);
             this.Controls.Add(this.buttonSearch);
             this.Controls.Add(this.buttonDisplay);
@@ -166,5 +178,6 @@ namespace Client_HR.Forms
         private System.Windows.Forms.Button buttonInsert;
         private System.Windows.Forms.TextBox textStatusName;
         private System.Windows.Forms.DataGridView dgStatuses;
+        private System.Windows.Forms.Button buttonPdf;
     }
 }

@@ -17,7 +17,7 @@ namespace Client_HR
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             //Application.Run(new Forms.DepartmentsForm());
-            Application.Run(new Forms.Branches());
+            //Application.Run(new Forms.Branches());
             //Application.Run(new Forms.JobTitlesForm());
             //Application.Run(new Forms.EmploymentStatusForm());
             //Application.Run(new Forms.EmployeesForm());

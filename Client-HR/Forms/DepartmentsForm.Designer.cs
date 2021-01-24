@@ -38,6 +38,7 @@ namespace Client_HR.Forms
             this.dgDepartments = new System.Windows.Forms.DataGridView();
             this.buttonSearch = new System.Windows.Forms.Button();
             this.textSearchID = new System.Windows.Forms.TextBox();
+            this.buttonPdf = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgDepartments)).BeginInit();
             this.SuspendLayout();
             // 
@@ -133,11 +134,22 @@ namespace Client_HR.Forms
             this.textSearchID.Size = new System.Drawing.Size(223, 40);
             this.textSearchID.TabIndex = 41;
             // 
+            // buttonPdf
+            // 
+            this.buttonPdf.Location = new System.Drawing.Point(983, 38);
+            this.buttonPdf.Name = "buttonPdf";
+            this.buttonPdf.Size = new System.Drawing.Size(363, 51);
+            this.buttonPdf.TabIndex = 70;
+            this.buttonPdf.Text = "PDF";
+            this.buttonPdf.UseVisualStyleBackColor = true;
+            this.buttonPdf.Click += new System.EventHandler(this.buttonPdf_Click);
+            // 
             // DepartmentsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1388, 786);
+            this.Controls.Add(this.buttonPdf);
             this.Controls.Add(this.textSearchID);
             this.Controls.Add(this.buttonSearch);
             this.Controls.Add(this.buttonDisplay);
@@ -165,5 +177,6 @@ namespace Client_HR.Forms
         private System.Windows.Forms.DataGridView dgDepartments;
         private System.Windows.Forms.Button buttonSearch;
         private System.Windows.Forms.TextBox textSearchID;
+        private System.Windows.Forms.Button buttonPdf;
     }
 }

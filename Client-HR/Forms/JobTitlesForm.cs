@@ -1,10 +1,13 @@
 ﻿using Client_HR.Models;
+using iTextSharp.text;
+using iTextSharp.text.pdf;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Net.Http;
 using System.Text;
@@ -248,6 +251,80 @@ namespace Client_HR.Forms
                 textSearchID.Text = (Convert.ToInt32(dgJobTitles.CurrentRow.Cells["jobTitleId"].Value)).ToString();
                 textJobTitleName.Text = (string)dgJobTitles.CurrentRow.Cells["jobTitleName"].Value.ToString();
             }
+        }
+
+        private void buttonPdf_Click(object sender, EventArgs e)
+        {
+            void ExportToPdf()
+            {
+                var pdfDoc = new Document(PageSize.LETTER, 40f, 40f, 60f, 60f);
+                string path = $"C:\\PDF-HR\\PDF reports\\titles.pdf";
+
+                PdfWriter.GetInstance(pdfDoc, new FileStream(path, FileMode.OpenOrCreate));
+                pdfDoc.Open();
+
+                var title = new Paragraph(" .NET Project - Human Resources ");
+                pdfDoc.Add(title);
+
+                var spacer = new Paragraph("")
+                {
+                    SpacingBefore = 10f,
+                    SpacingAfter = 10f,
+                };
+
+                pdfDoc.Add(spacer);
+
+                var headerTable = new PdfPTable(new[] { .75f, 2f })
+                {
+                    HorizontalAlignment = Left,
+                    WidthPercentage = 75,
+                    DefaultCell = { MinimumHeight = 22f }
+                };
+
+                pdfDoc.Add(headerTable);
+                pdfDoc.Add(spacer);
+
+                var columnCount = dgJobTitles.ColumnCount;
+                var columnWidths = new[] { 1f, 3f };
+
+                var table = new PdfPTable(columnWidths)
+                {
+                    HorizontalAlignment = Left,
+                    WidthPercentage = 100,
+                    DefaultCell = { MinimumHeight = 22f }
+                };
+
+                var cell = new PdfPCell(new Phrase("Job Titles list"))
+                {
+                    Colspan = columnCount,
+                    HorizontalAlignment = 1,
+                    MinimumHeight = 30f
+                };
+
+                table.AddCell(cell);
+
+                //header
+                dgJobTitles.Columns
+                    .OfType<DataGridViewColumn>()
+                    .ToList()
+                    .ForEach(c => table.AddCell(c.Name));
+
+                // rows
+                dgJobTitles.Rows
+                    .OfType<DataGridViewRow>()
+                    .ToList()
+                    .ForEach(r =>
+                    {
+                        var cells = r.Cells.OfType<DataGridViewCell>().ToList();
+                        cells.ForEach(c => table.AddCell(c.Value.ToString()));
+                    });
+
+                pdfDoc.Add(table);
+
+                pdfDoc.Close();
+                System.Diagnostics.Process.Start(path);
+            }
+            ExportToPdf();
         }
     }
 }
