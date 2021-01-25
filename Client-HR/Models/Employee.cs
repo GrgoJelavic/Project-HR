@@ -36,21 +36,12 @@ namespace Client_HR.Models
 
         public long branchId { get; set; }
 
-        public string branchName { get; set; }
-
         public long departmentId { get; set; }
-
-       public string departmentName { get; set; }
 
 
         public long employmentStatusId { get; set; }
 
-        public string employmentStatusName { get; set; }
-
-
         public long jobTitleId { get; set; }
-
-        public string jobTitleName { get; set; }
 
 
         public decimal salary { get; set; }

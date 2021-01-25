@@ -48,7 +48,10 @@ namespace Client_HR.Forms
             this.dgBranches = new System.Windows.Forms.DataGridView();
             this.buttonBranchEmployees = new System.Windows.Forms.Button();
             this.buttonPdf = new System.Windows.Forms.Button();
+            this.dgByID = new System.Windows.Forms.DataGridView();
+            this.buttonPdfByID = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgBranches)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgByID)).BeginInit();
             this.SuspendLayout();
             // 
             // buttonDelete
@@ -207,11 +210,11 @@ namespace Client_HR.Forms
             // dgBranches
             // 
             this.dgBranches.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgBranches.Location = new System.Drawing.Point(549, 106);
+            this.dgBranches.Location = new System.Drawing.Point(559, 106);
             this.dgBranches.Name = "dgBranches";
             this.dgBranches.RowHeadersWidth = 82;
             this.dgBranches.RowTemplate.Height = 33;
-            this.dgBranches.Size = new System.Drawing.Size(1101, 946);
+            this.dgBranches.Size = new System.Drawing.Size(1101, 613);
             this.dgBranches.TabIndex = 51;
             this.dgBranches.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dgBranches_MouseClick_1);
             // 
@@ -228,19 +231,41 @@ namespace Client_HR.Forms
             // 
             // buttonPdf
             // 
-            this.buttonPdf.Location = new System.Drawing.Point(1287, 30);
+            this.buttonPdf.Location = new System.Drawing.Point(871, 22);
             this.buttonPdf.Name = "buttonPdf";
             this.buttonPdf.Size = new System.Drawing.Size(363, 51);
             this.buttonPdf.TabIndex = 69;
-            this.buttonPdf.Text = "PDF";
+            this.buttonPdf.Text = "PDF Branches";
             this.buttonPdf.UseVisualStyleBackColor = true;
             this.buttonPdf.Click += new System.EventHandler(this.buttonPdf_Click);
+            // 
+            // dgByID
+            // 
+            this.dgByID.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgByID.Location = new System.Drawing.Point(559, 771);
+            this.dgByID.Name = "dgByID";
+            this.dgByID.RowHeadersWidth = 82;
+            this.dgByID.RowTemplate.Height = 33;
+            this.dgByID.Size = new System.Drawing.Size(1101, 249);
+            this.dgByID.TabIndex = 70;
+            // 
+            // buttonPdfByID
+            // 
+            this.buttonPdfByID.Location = new System.Drawing.Point(1297, 22);
+            this.buttonPdfByID.Name = "buttonPdfByID";
+            this.buttonPdfByID.Size = new System.Drawing.Size(363, 51);
+            this.buttonPdfByID.TabIndex = 71;
+            this.buttonPdfByID.Text = "PDF Branch Employees";
+            this.buttonPdfByID.UseVisualStyleBackColor = true;
+            this.buttonPdfByID.Click += new System.EventHandler(this.buttonPdfByID_Click);
             // 
             // Branches
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1682, 1072);
+            this.ClientSize = new System.Drawing.Size(1698, 1174);
+            this.Controls.Add(this.buttonPdfByID);
+            this.Controls.Add(this.dgByID);
             this.Controls.Add(this.buttonPdf);
             this.Controls.Add(this.buttonBranchEmployees);
             this.Controls.Add(this.buttonDelete);
@@ -263,6 +288,7 @@ namespace Client_HR.Forms
             this.Name = "Branches";
             this.Text = "Branches";
             ((System.ComponentModel.ISupportInitialize)(this.dgBranches)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgByID)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -289,5 +315,7 @@ namespace Client_HR.Forms
         private System.Windows.Forms.DataGridView dgBranches;
         private System.Windows.Forms.Button buttonBranchEmployees;
         private System.Windows.Forms.Button buttonPdf;
+        private System.Windows.Forms.DataGridView dgByID;
+        private System.Windows.Forms.Button buttonPdfByID;
     }
 }

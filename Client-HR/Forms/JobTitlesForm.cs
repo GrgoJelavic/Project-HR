@@ -253,12 +253,53 @@ namespace Client_HR.Forms
             }
         }
 
+        private async void buttonTitleEmployees_Click(object sender, EventArgs e)
+        {
+            async Task<string> DepartmentEmployees(int id)
+            {
+                using (HttpClient client = new HttpClient())
+                {
+                    using (HttpResponseMessage res = await client.GetAsync("http://localhost:60973/api/employee"))
+                    {
+                        using (HttpContent content = res.Content)
+                        {
+                            string data = await content.ReadAsStringAsync();
+
+                            if (data != null) return data;
+                        }
+                    }
+                }
+                return string.Empty;
+            }
+
+            try
+            {
+                var response = await DepartmentEmployees(int.Parse(textSearchID.Text.Trim()));
+
+                var employeesList = JsonConvert.DeserializeObject<List<EmployeeFull>>(response);
+
+                var departmentEmployees = employeesList.Where(x => x.jobTitleId == int.Parse(textSearchID.Text)).ToList();
+
+
+                dgById.DataSource = departmentEmployees;
+            }
+            catch (HttpRequestException x)
+            {
+                MessageBox.Show(x.Message);
+            }
+
+            catch (System.FormatException x)
+            {
+                MessageBox.Show(x.Message);
+            }
+        }
+
         private void buttonPdf_Click(object sender, EventArgs e)
         {
             void ExportToPdf()
             {
                 var pdfDoc = new Document(PageSize.LETTER, 40f, 40f, 60f, 60f);
-                string path = $"C:\\PDF-HR\\PDF reports\\titles.pdf";
+                string path = $"C:\\PDF-HR\\PDF reports\\jobTitles.pdf";
 
                 PdfWriter.GetInstance(pdfDoc, new FileStream(path, FileMode.OpenOrCreate));
                 pdfDoc.Open();
@@ -311,6 +352,82 @@ namespace Client_HR.Forms
 
                 // rows
                 dgJobTitles.Rows
+                    .OfType<DataGridViewRow>()
+                    .ToList()
+                    .ForEach(r =>
+                    {
+                        var cells = r.Cells.OfType<DataGridViewCell>().ToList();
+                        cells.ForEach(c => table.AddCell(c.Value.ToString()));
+                    });
+
+                pdfDoc.Add(table);
+
+                pdfDoc.Close();
+                System.Diagnostics.Process.Start(path);
+            }
+            ExportToPdf();
+        }
+
+        private void buttonPdfById_Click(object sender, EventArgs e)
+        {
+            void ExportToPdf()
+            {
+                var pdfDoc = new Document(new iTextSharp.text.Rectangle(288f, 144f), 5, 5, 5, 5);
+                pdfDoc.SetPageSize(iTextSharp.text.PageSize.A4.Rotate());
+
+                string path = $"C:\\PDF-HR\\PDF reports\\statusEmployees.pdf";
+
+                PdfWriter.GetInstance(pdfDoc, new FileStream(path, FileMode.OpenOrCreate));
+                pdfDoc.Open();
+
+                var title = new Paragraph(" .NET Project - Human Resources ");
+                pdfDoc.Add(title);
+
+                var spacer = new Paragraph("")
+                {
+                    SpacingBefore = 10f,
+                    SpacingAfter = 10f,
+                };
+
+                pdfDoc.Add(spacer);
+
+                var headerTable = new PdfPTable(new[] { .75f, 2f })
+                {
+                    HorizontalAlignment = Left,
+                    WidthPercentage = 75,
+                    DefaultCell = { MinimumHeight = 22f }
+                };
+
+                pdfDoc.Add(headerTable);
+                pdfDoc.Add(spacer);
+
+                var columnCount = dgById.ColumnCount;
+                var columnWidths = new[] { 0.8f, 0.8f, 0.8f, 0.8f, 0.8f, 0.8f, 0.8f, 0.8f, 0.8f, 0.8f, 0.8f, 0.8f, 0.8f, 0.8f, 0.8f, 0.8f, 0.8f, 0.8f, 0.8f, 0.8f, 0.8f, 0.8f, 0.8f };
+
+                var table = new PdfPTable(columnWidths)
+                {
+                    HorizontalAlignment = Left,
+                    WidthPercentage = 100,
+                    DefaultCell = { MinimumHeight = 22f }
+                };
+
+                var cell = new PdfPCell(new Phrase("Department Employees"))
+                {
+                    Colspan = columnCount,
+                    HorizontalAlignment = 1,
+                    MinimumHeight = 30f
+                };
+
+                table.AddCell(cell);
+
+                //header
+                dgById.Columns
+                    .OfType<DataGridViewColumn>()
+                    .ToList()
+                    .ForEach(c => table.AddCell(c.Name));
+
+                // rows
+                dgById.Rows
                     .OfType<DataGridViewRow>()
                     .ToList()
                     .ForEach(r =>
