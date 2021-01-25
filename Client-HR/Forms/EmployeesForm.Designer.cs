@@ -205,7 +205,7 @@ namespace Client_HR.Forms
             this.dateEmployment.Name = "dateEmployment";
             this.dateEmployment.Size = new System.Drawing.Size(286, 44);
             this.dateEmployment.TabIndex = 139;
-            this.dateEmployment.Value = new System.DateTime(2021, 1, 23, 0, 0, 0, 0);
+            this.dateEmployment.Value = new System.DateTime(2021, 1, 25, 0, 0, 0, 0);
             // 
             // dateBirthday
             // 

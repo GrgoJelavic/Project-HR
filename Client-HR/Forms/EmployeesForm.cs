@@ -605,7 +605,7 @@ namespace Client_HR.Forms
                 textStatusID.Text = Convert.ToInt64(dgEmployees.CurrentRow.Cells["employmentStatusId"].Value).ToString();
                 textTitleID.Text = Convert.ToInt64(dgEmployees.CurrentRow.Cells["jobTitleId"].Value).ToString();
                 textSalary.Text = (string)dgEmployees.CurrentRow.Cells["salary"].Value.ToString();
-                dateEmployment.Text = (string)dgEmployees.CurrentRow.Cells["employmentDate"].Value.ToString();
+                dateEmployment.Text = dgEmployees.CurrentRow.Cells["employmentDate"].Value.ToString();
             }
         }
 
@@ -643,7 +643,7 @@ namespace Client_HR.Forms
                 pdfDoc.Add(spacer);
 
                 var columnCount = dgEmployees.ColumnCount;
-                var columnWidths = new[] { 0.8f, 0.8f, 0.8f, 0.8f, 0.8f, 0.8f, 0.8f, 0.8f, 0.8f, 0.8f, 0.8f, 0.8f, 0.8f, 0.8f, 0.8f, 0.8f, 0.8f, 0.8f, 0.8f, 0.8f, 0.8f, 0.8f, 0.8f };
+                var columnWidths = new[] { 0.8f, 0.8f, 0.8f, 0.8f, 0.8f, 0.8f, 0.8f, 0.8f, 0.8f, 0.8f, 0.8f, 0.8f, 0.8f, 0.8f, 0.8f, 0.8f, 0.8f, 0.8f, 0.8f };
 
                 var table = new PdfPTable(columnWidths)
                 {

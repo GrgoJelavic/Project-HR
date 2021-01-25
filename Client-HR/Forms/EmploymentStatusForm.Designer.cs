@@ -39,25 +39,29 @@ namespace Client_HR.Forms
             this.textStatusName = new System.Windows.Forms.TextBox();
             this.dgStatuses = new System.Windows.Forms.DataGridView();
             this.buttonPdf = new System.Windows.Forms.Button();
+            this.buttonStatusEmployees = new System.Windows.Forms.Button();
+            this.buttonPdfById = new System.Windows.Forms.Button();
+            this.dgById = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.dgStatuses)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgById)).BeginInit();
             this.SuspendLayout();
             // 
             // textSearchID
             // 
             this.textSearchID.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textSearchID.Location = new System.Drawing.Point(363, 305);
+            this.textSearchID.Location = new System.Drawing.Point(226, 305);
             this.textSearchID.Name = "textSearchID";
-            this.textSearchID.Size = new System.Drawing.Size(223, 40);
+            this.textSearchID.Size = new System.Drawing.Size(159, 40);
             this.textSearchID.TabIndex = 50;
             // 
             // buttonSearch
             // 
             this.buttonSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonSearch.Location = new System.Drawing.Point(50, 294);
+            this.buttonSearch.Location = new System.Drawing.Point(52, 299);
             this.buttonSearch.Name = "buttonSearch";
-            this.buttonSearch.Size = new System.Drawing.Size(279, 51);
+            this.buttonSearch.Size = new System.Drawing.Size(159, 51);
             this.buttonSearch.TabIndex = 49;
-            this.buttonSearch.Text = "SEARCH by ID";
+            this.buttonSearch.Text = "Get by ID";
             this.buttonSearch.UseVisualStyleBackColor = true;
             this.buttonSearch.Click += new System.EventHandler(this.buttonSearch_Click);
             // 
@@ -126,29 +130,63 @@ namespace Client_HR.Forms
             // dgStatuses
             // 
             this.dgStatuses.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgStatuses.Location = new System.Drawing.Point(658, 136);
+            this.dgStatuses.Location = new System.Drawing.Point(626, 136);
             this.dgStatuses.Name = "dgStatuses";
             this.dgStatuses.RowHeadersWidth = 82;
             this.dgStatuses.RowTemplate.Height = 33;
-            this.dgStatuses.Size = new System.Drawing.Size(656, 598);
+            this.dgStatuses.Size = new System.Drawing.Size(782, 342);
             this.dgStatuses.TabIndex = 42;
             this.dgStatuses.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dgStatuses_MouseClick);
             // 
             // buttonPdf
             // 
-            this.buttonPdf.Location = new System.Drawing.Point(951, 50);
+            this.buttonPdf.Location = new System.Drawing.Point(626, 52);
             this.buttonPdf.Name = "buttonPdf";
-            this.buttonPdf.Size = new System.Drawing.Size(363, 51);
+            this.buttonPdf.Size = new System.Drawing.Size(371, 51);
             this.buttonPdf.TabIndex = 71;
-            this.buttonPdf.Text = "PDF";
+            this.buttonPdf.Text = "PDF Statuses";
             this.buttonPdf.UseVisualStyleBackColor = true;
             this.buttonPdf.Click += new System.EventHandler(this.buttonPdf_Click);
+            // 
+            // buttonStatusEmployees
+            // 
+            this.buttonStatusEmployees.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonStatusEmployees.Location = new System.Drawing.Point(407, 299);
+            this.buttonStatusEmployees.Name = "buttonStatusEmployees";
+            this.buttonStatusEmployees.Size = new System.Drawing.Size(181, 51);
+            this.buttonStatusEmployees.TabIndex = 76;
+            this.buttonStatusEmployees.Text = "Employees";
+            this.buttonStatusEmployees.UseVisualStyleBackColor = true;
+            this.buttonStatusEmployees.Click += new System.EventHandler(this.buttonStatusEmployees_Click);
+            // 
+            // buttonPdfById
+            // 
+            this.buttonPdfById.Location = new System.Drawing.Point(1029, 50);
+            this.buttonPdfById.Name = "buttonPdfById";
+            this.buttonPdfById.Size = new System.Drawing.Size(379, 53);
+            this.buttonPdfById.TabIndex = 77;
+            this.buttonPdfById.Text = "PDF Employees by Status";
+            this.buttonPdfById.UseVisualStyleBackColor = true;
+            this.buttonPdfById.Click += new System.EventHandler(this.buttonPdfById_Click);
+            // 
+            // dgById
+            // 
+            this.dgById.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgById.Location = new System.Drawing.Point(626, 504);
+            this.dgById.Name = "dgById";
+            this.dgById.RowHeadersWidth = 82;
+            this.dgById.RowTemplate.Height = 33;
+            this.dgById.Size = new System.Drawing.Size(782, 260);
+            this.dgById.TabIndex = 78;
             // 
             // EmploymentStatusForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1506, 1014);
+            this.ClientSize = new System.Drawing.Size(1500, 810);
+            this.Controls.Add(this.dgById);
+            this.Controls.Add(this.buttonPdfById);
+            this.Controls.Add(this.buttonStatusEmployees);
             this.Controls.Add(this.buttonPdf);
             this.Controls.Add(this.textSearchID);
             this.Controls.Add(this.buttonSearch);
@@ -162,6 +200,7 @@ namespace Client_HR.Forms
             this.Name = "EmploymentStatusForm";
             this.Text = "Employment Statuses";
             ((System.ComponentModel.ISupportInitialize)(this.dgStatuses)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgById)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -179,5 +218,8 @@ namespace Client_HR.Forms
         private System.Windows.Forms.TextBox textStatusName;
         private System.Windows.Forms.DataGridView dgStatuses;
         private System.Windows.Forms.Button buttonPdf;
+        private System.Windows.Forms.Button buttonStatusEmployees;
+        private System.Windows.Forms.Button buttonPdfById;
+        private System.Windows.Forms.DataGridView dgById;
     }
 }
