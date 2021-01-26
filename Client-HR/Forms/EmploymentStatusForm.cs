@@ -259,7 +259,7 @@ namespace Client_HR.Forms
             {
                 using (HttpClient client = new HttpClient())
                 {
-                    using (HttpResponseMessage res = await client.GetAsync("http://localhost:60973/api/employee"))
+                    using (HttpResponseMessage res = await client.GetAsync("http://localhost:60973/api/values"))
                     {
                         using (HttpContent content = res.Content)
                         {
@@ -276,9 +276,9 @@ namespace Client_HR.Forms
             {
                 var response = await DepartmentEmployees(int.Parse(textSearchID.Text.Trim()));
 
-                var employee = JsonConvert.DeserializeObject<List<EmployeeFull>>(response);
+                var employeeList = JsonConvert.DeserializeObject<List<EmployeeByAttribute>>(response);
 
-                var departmentEmployees = employee.Where(x => x.employmentStatusId == int.Parse(textSearchID.Text)).ToList();
+                var departmentEmployees = employeeList.Where(x => x.sID == int.Parse(textSearchID.Text)).ToList();
 
 
                 dgById.DataSource = departmentEmployees;
@@ -335,7 +335,7 @@ namespace Client_HR.Forms
                     DefaultCell = { MinimumHeight = 22f }
                 };
 
-                var cell = new PdfPCell(new Phrase("Employment Statuses list"))
+                var cell = new PdfPCell(new Phrase("Employment Statuses"))
                 {
                     Colspan = columnCount,
                     HorizontalAlignment = 1,
@@ -372,10 +372,10 @@ namespace Client_HR.Forms
         {
             void ExportToPdf()
             {
-                var pdfDoc = new Document(new iTextSharp.text.Rectangle(288f, 144f), 5, 5, 5, 5);
+                var pdfDoc = new Document(new iTextSharp.text.Rectangle(288f, 144f), 10, 10, 10, 10);
                 pdfDoc.SetPageSize(iTextSharp.text.PageSize.A4.Rotate());
 
-                string path = $"C:\\PDF-HR\\PDF reports\\statusEmployees.pdf";
+                string path = $"C:\\PDF-HR\\PDF reports\\employeesByStatus.pdf";
 
                 PdfWriter.GetInstance(pdfDoc, new FileStream(path, FileMode.OpenOrCreate));
                 pdfDoc.Open();
@@ -402,7 +402,7 @@ namespace Client_HR.Forms
                 pdfDoc.Add(spacer);
 
                 var columnCount = dgById.ColumnCount;
-                var columnWidths = new[] { 0.8f, 0.8f, 0.8f, 0.8f, 0.8f, 0.8f, 0.8f, 0.8f, 0.8f, 0.8f, 0.8f, 0.8f, 0.8f, 0.8f, 0.8f, 0.8f, 0.8f, 0.8f, 0.8f, 0.8f, 0.8f, 0.8f, 0.8f };
+                var columnWidths = new[] { 1f, 1f, 1f, 0.5f, 1f, 0.5f, 1f, 0.5f, 1f, 0.5f, 1f };
 
                 var table = new PdfPTable(columnWidths)
                 {
@@ -411,7 +411,7 @@ namespace Client_HR.Forms
                     DefaultCell = { MinimumHeight = 22f }
                 };
 
-                var cell = new PdfPCell(new Phrase("Department Employees"))
+                var cell = new PdfPCell(new Phrase("Employees by Status"))
                 {
                     Colspan = columnCount,
                     HorizontalAlignment = 1,

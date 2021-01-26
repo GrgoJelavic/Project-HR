@@ -270,6 +270,5 @@ namespace API_HR.Controllers
                 }
             }
         }
-
     }
 }

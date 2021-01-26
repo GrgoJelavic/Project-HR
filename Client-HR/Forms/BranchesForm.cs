@@ -275,7 +275,7 @@ namespace Client_HR.Forms
             {
                 using (HttpClient client = new HttpClient())
                 {
-                    using (HttpResponseMessage res = await client.GetAsync("http://localhost:60973/api/employee"))
+                    using (HttpResponseMessage res = await client.GetAsync("http://localhost:60973/api/values"))
                     {
                         using (HttpContent content = res.Content)
                         {
@@ -292,12 +292,12 @@ namespace Client_HR.Forms
             {
                 var response = await BranchEmployees(int.Parse(textSearchID.Text.Trim()));
 
-                var employee = JsonConvert.DeserializeObject<List<EmployeeFull>>(response);
+                var employeeList = JsonConvert.DeserializeObject<List<EmployeeByAttribute>>(response);
 
-                var banchEmployees = employee.Where(x => x.branchId == int.Parse(textSearchID.Text)).ToList();
+                var branchEmployees = employeeList.Where(x => x.bID == int.Parse(textSearchID.Text)).ToList();
 
 
-                dgByID.DataSource = banchEmployees;
+                dgByID.DataSource = branchEmployees;
             }
             catch (HttpRequestException x)
             {
@@ -388,10 +388,10 @@ namespace Client_HR.Forms
         {
             void ExportToPdf()
             {
-                var pdfDoc = new Document(new iTextSharp.text.Rectangle(288f, 144f), 5, 5, 5, 5);
+                var pdfDoc = new Document(new iTextSharp.text.Rectangle(288f, 144f), 10, 10, 10, 10);
                 pdfDoc.SetPageSize(iTextSharp.text.PageSize.A4.Rotate());
 
-                string path = $"C:\\PDF-HR\\PDF reports\\branchEmployees.pdf";
+                string path = $"C:\\PDF-HR\\PDF reports\\EmployeesByBranchID.pdf";
 
                 PdfWriter.GetInstance(pdfDoc, new FileStream(path, FileMode.OpenOrCreate));
                 pdfDoc.Open();
@@ -418,7 +418,7 @@ namespace Client_HR.Forms
                 pdfDoc.Add(spacer);
 
                 var columnCount = dgByID.ColumnCount;
-                var columnWidths = new[] { 0.8f, 0.8f, 0.8f, 0.8f, 0.8f, 0.8f, 0.8f, 0.8f, 0.8f, 0.8f, 0.8f, 0.8f, 0.8f, 0.8f, 0.8f, 0.8f, 0.8f, 0.8f, 0.8f, 0.8f, 0.8f, 0.8f, 0.8f };
+                var columnWidths = new[] { 1f, 1f, 1f, 0.5f, 1f, 0.5f, 1f, 0.5f, 1f, 0.5f, 1f};
 
                 var table = new PdfPTable(columnWidths)
                 {

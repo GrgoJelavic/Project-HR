@@ -170,15 +170,14 @@
     <Compile Include="Controllers\BranchController.cs" />
     <Compile Include="Controllers\DepartmentController.cs" />
     <Compile Include="Controllers\EmployeeController.cs" />
-    <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\JobTitleController.cs" />
     <Compile Include="Controllers\StatusController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="ModelsFull\BranchEmployees.cs" />
-    <Compile Include="ModelsFull\EmployeeFull.cs" />
+    <Compile Include="ModelsCustom\EmployeesByAttribute.cs" />
+    <Compile Include="ModelsCustom\EmployeeFull.cs" />
     <Compile Include="Models\Branches.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
@@ -284,6 +283,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Default\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
