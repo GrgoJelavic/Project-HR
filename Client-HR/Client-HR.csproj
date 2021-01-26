@@ -94,6 +94,7 @@
     <Compile Include="Models\Branch.cs" />
     <Compile Include="Models\Department.cs" />
     <Compile Include="Models\Employee.cs" />
+    <Compile Include="Models\EmployeeByAttribute.cs" />
     <Compile Include="Models\EmployeeFull.cs" />
     <Compile Include="Models\JobTitle.cs" />
     <Compile Include="Models\Status.cs" />

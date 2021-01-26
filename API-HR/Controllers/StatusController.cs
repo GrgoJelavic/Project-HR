@@ -25,7 +25,7 @@ namespace API_HR.Controllers
                 {
                     var status = new StatusBO();
                     status.employmentStatusID = employStatus.EmploymentStatusID;
-                    status.status = employStatus.StatusName;
+                    status.statusName = employStatus.StatusName;
 
                     titleList.Add(status);
                 }
@@ -46,7 +46,7 @@ namespace API_HR.Controllers
 
                 var employStatus = new StatusBO();
                 employStatus.employmentStatusID = status.EmploymentStatusID;
-                employStatus.status = status.StatusName;
+                employStatus.statusName = status.StatusName;
 
                 return employStatus;
             }

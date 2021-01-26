@@ -25,7 +25,7 @@ namespace API_HR.Controllers
                 {
                     var title = new JobTitleBO();
                     title.jobtitleId = jobTitle.JobTitleID;
-                    title.jobTitle = jobTitle.JobTitleName;
+                    title.jobTitleName = jobTitle.JobTitleName;
 
                     titleList.Add(title);
                 }
@@ -46,7 +46,7 @@ namespace API_HR.Controllers
 
                 var title = new JobTitleBO();
                 title.jobtitleId = jobTitle.JobTitleID;
-                title.jobTitle = jobTitle.JobTitleName;
+                title.jobTitleName = jobTitle.JobTitleName;
 
                 return title;
             }

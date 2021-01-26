@@ -39,7 +39,11 @@ namespace Client_HR.Forms
             this.departmentsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.titlesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.dgMain = new System.Windows.Forms.DataGridView();
+            this.buttonDisplay = new System.Windows.Forms.Button();
+            this.btnPdf = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgMain)).BeginInit();
             this.SuspendLayout();
             // 
             // buttonPdf
@@ -74,16 +78,15 @@ namespace Client_HR.Forms
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(53, 383);
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.125F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(403, 131);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(919, 55);
+            this.label2.Size = new System.Drawing.Size(859, 51);
             this.label2.TabIndex = 84;
             this.label2.Text = "Welcome to the Human Resource System";
             // 
             // menuStrip1
             // 
-            this.menuStrip1.GripMargin = new System.Windows.Forms.Padding(2, 2, 0, 2);
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(32, 32);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.eMPLOYEESToolStripMenuItem,
@@ -93,7 +96,7 @@ namespace Client_HR.Forms
             this.statusesToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1108, 59);
+            this.menuStrip1.Size = new System.Drawing.Size(1606, 59);
             this.menuStrip1.TabIndex = 86;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -137,11 +140,45 @@ namespace Client_HR.Forms
             this.statusesToolStripMenuItem.Text = "Statuses";
             this.statusesToolStripMenuItem.Click += new System.EventHandler(this.statusesToolStripMenuItem_Click);
             // 
+            // dgMain
+            // 
+            this.dgMain.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgMain.Location = new System.Drawing.Point(31, 319);
+            this.dgMain.Name = "dgMain";
+            this.dgMain.RowHeadersWidth = 82;
+            this.dgMain.RowTemplate.Height = 33;
+            this.dgMain.Size = new System.Drawing.Size(1537, 691);
+            this.dgMain.TabIndex = 88;
+            // 
+            // buttonDisplay
+            // 
+            this.buttonDisplay.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonDisplay.Location = new System.Drawing.Point(31, 243);
+            this.buttonDisplay.Name = "buttonDisplay";
+            this.buttonDisplay.Size = new System.Drawing.Size(562, 48);
+            this.buttonDisplay.TabIndex = 154;
+            this.buttonDisplay.Text = "DISPLAY ALL EMPLOYEES";
+            this.buttonDisplay.UseVisualStyleBackColor = true;
+            this.buttonDisplay.Click += new System.EventHandler(this.buttonDisplay_Click);
+            // 
+            // btnPdf
+            // 
+            this.btnPdf.Location = new System.Drawing.Point(1006, 243);
+            this.btnPdf.Name = "btnPdf";
+            this.btnPdf.Size = new System.Drawing.Size(562, 48);
+            this.btnPdf.TabIndex = 155;
+            this.btnPdf.Text = "PDF";
+            this.btnPdf.UseVisualStyleBackColor = true;
+            this.btnPdf.Click += new System.EventHandler(this.btnPdf_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1108, 896);
+            this.ClientSize = new System.Drawing.Size(1606, 1142);
+            this.Controls.Add(this.btnPdf);
+            this.Controls.Add(this.buttonDisplay);
+            this.Controls.Add(this.dgMain);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.buttonPdf);
             this.Controls.Add(this.label1);
@@ -152,6 +189,7 @@ namespace Client_HR.Forms
             this.Text = "MainForm";
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgMain)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -169,5 +207,8 @@ namespace Client_HR.Forms
         private System.Windows.Forms.ToolStripMenuItem departmentsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem titlesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem statusesToolStripMenuItem;
+        private System.Windows.Forms.DataGridView dgMain;
+        private System.Windows.Forms.Button buttonDisplay;
+        private System.Windows.Forms.Button btnPdf;
     }
 }
