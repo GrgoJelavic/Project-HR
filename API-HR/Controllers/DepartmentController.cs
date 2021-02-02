@@ -15,11 +15,10 @@ namespace API_HR.Controllers
         // GET: api/Department
         public List<DepartmentBO> Get()
         {
-
             using (HREntities db = new HREntities())
             {
                 var allDepartments = new List<Departments>();
-                allDepartments = db.Departments.ToList<Departments>();
+                allDepartments = db.Departments.ToList();
                 var departmentList = new List<DepartmentBO>();
 
                 foreach (var department in allDepartments)
@@ -40,7 +39,7 @@ namespace API_HR.Controllers
             using (HREntities db = new HREntities())
             {
                 var allDepartments = new List<Departments>();
-                allDepartments = db.Departments.ToList<Departments>();
+                allDepartments = db.Departments.ToList();
                 Departments department = allDepartments.Where(x => x.DepartmentID == id).FirstOrDefault();
 
                 if (department == null) return NotFound();

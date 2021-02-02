@@ -415,6 +415,7 @@ namespace Client_HR.Forms
             async Task<string> UpdateEmployee()
             {
                 int id = int.Parse(textSearchID.Text.Trim());
+
                 string firstName = textFirstName.Text;
                 string lastName = textLastName.Text;
                 string oib = textOIB.Text;
@@ -582,7 +583,6 @@ namespace Client_HR.Forms
                 MessageBox.Show(x.Message);
             }
         }
-
 
         private void dgEmployees_MouseClick(object sender, MouseEventArgs e)
         {

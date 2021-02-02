@@ -90,9 +90,11 @@ namespace Client_HR.Forms
                         {
                             string data = await content.ReadAsStringAsync();
 
-                            if (data != null) return data;
-
-                            MessageBox.Show("Branch Succsesfully Created!");
+                            if (data != null)
+                            {
+                                MessageBox.Show("Branch Succsesfully Created!");
+                                return data;
+                            }     
                         }
                     }
                 }
@@ -458,6 +460,11 @@ namespace Client_HR.Forms
                 System.Diagnostics.Process.Start(path);
             }
             ExportToPdf();
+        }
+
+        private void textSearchID_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

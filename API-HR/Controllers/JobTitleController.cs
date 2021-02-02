@@ -18,7 +18,7 @@ namespace API_HR.Controllers
             using (HREntities db = new HREntities())
             {
                 var allTitles = new List<JobTitles>();
-                allTitles = db.JobTitles.ToList<JobTitles>();
+                allTitles = db.JobTitles.ToList();
                 var titleList = new List<JobTitleBO>();
 
                 foreach (var jobTitle in allTitles)
@@ -39,7 +39,7 @@ namespace API_HR.Controllers
             using (HREntities db = new HREntities())
             {
                 var allTitles = new List<JobTitles>();
-                allTitles = db.JobTitles.ToList<JobTitles>();
+                allTitles = db.JobTitles.ToList();
                 JobTitles jobTitle = allTitles.Where(x => x.JobTitleID == id).FirstOrDefault();
 
                 if (jobTitle == null) return NotFound();
@@ -115,7 +115,7 @@ namespace API_HR.Controllers
             using (HREntities db = new HREntities())
             {
                 var allJobtitles = new List<JobTitles>();
-                allJobtitles = db.JobTitles.ToList<JobTitles>();
+                allJobtitles = db.JobTitles.ToList();
 
                 try
                 {
@@ -142,7 +142,7 @@ namespace API_HR.Controllers
             using (HREntities db = new HREntities())
             {
                 var allJobtitles = new List<JobTitles>();
-                allJobtitles = db.JobTitles.ToList<JobTitles>();
+                allJobtitles = db.JobTitles.ToList();
 
                 var jobTitles = new Dictionary<int, string>();
 

@@ -11,11 +11,13 @@ namespace API_HR.Controllers
 {
     public class ValuesController : ApiController
     {
+        //employee controller main values
+
         public ValuesController()
         {
             using (HREntities db = new HREntities())
             {
-                List<Employees> employees = db.Employees.ToList<Employees>();
+                List<Employees> employees = db.Employees.ToList();
             }
         }
 
@@ -68,27 +70,6 @@ namespace API_HR.Controllers
             }
             if (allEmployees.Count == 0) return NotFound();
             else return allEmployees;
-
-            // GET api/values/5
-            //public string Get(int id)
-            //{
-            //    return "value";
-            //}
-
-            //// POST api/values
-            //public void Post([FromBody]string value)
-            //{
-            //}
-
-            //// PUT api/values/5
-            //public void Put(int id, [FromBody]string value)
-            //{
-            //}
-
-            //// DELETE api/values/5
-            //public void Delete(int id)
-            //{
-            //}
         }
     }
 }
