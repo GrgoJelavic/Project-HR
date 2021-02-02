@@ -94,6 +94,7 @@ namespace Client_HR.Forms
             this.textSearchID.Name = "textSearchID";
             this.textSearchID.Size = new System.Drawing.Size(133, 40);
             this.textSearchID.TabIndex = 64;
+            this.textSearchID.TextChanged += new System.EventHandler(this.textSearchID_TextChanged);
             // 
             // buttonSearch
             // 

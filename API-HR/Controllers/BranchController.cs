@@ -19,7 +19,7 @@ namespace API_HR.Controllers
             using (HREntities db = new HREntities())
             {
                 var allBranches = new List<Branches>();
-                allBranches = db.Branches.ToList<Branches>();
+                allBranches = db.Branches.ToList();
                 var branchList = new List<BranchBO>();
 
                 foreach (var branch in allBranches)
@@ -36,7 +36,6 @@ namespace API_HR.Controllers
                 }
                 return branchList;
             }
-  
         }
 
         // GET: api/Branch/5
@@ -46,7 +45,7 @@ namespace API_HR.Controllers
             {
 
                 var allBranches = new List<Branches>();
-                allBranches = db.Branches.ToList<Branches>();
+                allBranches = db.Branches.ToList();
                 Branches branch = allBranches.Where(x => x.BranchID == id).FirstOrDefault();
 
                 if (branch == null) return NotFound();
@@ -140,7 +139,7 @@ namespace API_HR.Controllers
             using (HREntities db = new HREntities())
             {
                 var allBranches = new List<Branches>();
-                allBranches = db.Branches.ToList<Branches>();
+                allBranches = db.Branches.ToList();
 
                 try
                 {
@@ -167,14 +166,12 @@ namespace API_HR.Controllers
             using (HREntities db = new HREntities())
             {
                 var allBranches = new List<Branches>();
-                allBranches = db.Branches.ToList<Branches>();
+                allBranches = db.Branches.ToList();
 
                 var branches = new Dictionary<int, string>();
 
-                foreach (var branch in allBranches)
-                {
-                    branches.Add(branch.BranchID, branch.BranchName);
-                }
+                foreach (var branch in allBranches) branches.Add(branch.BranchID, branch.BranchName);
+
                 return branches;
             }
         }

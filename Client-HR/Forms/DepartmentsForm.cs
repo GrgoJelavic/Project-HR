@@ -29,9 +29,6 @@ namespace Client_HR.Forms
                     {
                         using (HttpContent content = res.Content)
                         {
-                            //string statusCode = res.StatusCode.ToString() + " - " + ((int)res.StatusCode).ToString();
-                            //MessageBox.Show(statusCode);
-
                             string data = await content.ReadAsStringAsync();
 
                             if (data != null) return data;
@@ -77,9 +74,6 @@ namespace Client_HR.Forms
                     {
                         using (HttpContent content = res.Content)
                         {
-                            //string statusCode = res.StatusCode.ToString() + " - " + ((int)res.StatusCode).ToString();
-                            //MessageBox.Show(statusCode);
-
                             string data = await content.ReadAsStringAsync();
 
                             if (data != null)
@@ -123,7 +117,7 @@ namespace Client_HR.Forms
 
                 var filledRecords = new Dictionary<string, string>
                 {
-                    { "DepartmentName" , departmentName  }
+                    { "DepartmentName" , departmentName }
                 };
 
                 var input = new FormUrlEncodedContent(filledRecords);
@@ -442,6 +436,11 @@ namespace Client_HR.Forms
                 System.Diagnostics.Process.Start(path);
             }
             ExportToPdf();
+        }
+
+        private void buttonSearch_Click_1(object sender, EventArgs e)
+        {
+
         }
     }
 }

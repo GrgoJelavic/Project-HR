@@ -18,7 +18,7 @@ namespace API_HR.Controllers
             using (HREntities db = new HREntities())
             {
                 var allStatuses = new List<EmploymentStatuses>();
-                allStatuses = db.EmploymentStatuses.ToList<EmploymentStatuses>();
+                allStatuses = db.EmploymentStatuses.ToList();
                 var titleList = new List<StatusBO>();
 
                 foreach (var employStatus in allStatuses)
@@ -39,7 +39,7 @@ namespace API_HR.Controllers
             using (HREntities db = new HREntities())
             {
                 var allStatusess = new List<EmploymentStatuses>();
-                allStatusess = db.EmploymentStatuses.ToList<EmploymentStatuses>();
+                allStatusess = db.EmploymentStatuses.ToList();
                 EmploymentStatuses status = allStatusess.Where(x => x.EmploymentStatusID == id).FirstOrDefault();
 
                 if (status == null) return NotFound();
@@ -115,7 +115,7 @@ namespace API_HR.Controllers
             using (HREntities db = new HREntities())
             {
                 var allStatuses = new List<EmploymentStatuses>();
-                allStatuses = db.EmploymentStatuses.ToList<EmploymentStatuses>();
+                allStatuses = db.EmploymentStatuses.ToList();
 
                 try
                 {
@@ -142,11 +142,11 @@ namespace API_HR.Controllers
             using (HREntities db = new HREntities())
             {
                 var allStatuses = new List<EmploymentStatuses>();
-                allStatuses = db.EmploymentStatuses.ToList<EmploymentStatuses>();
+                allStatuses = db.EmploymentStatuses.ToList();
 
                 var statuses = new Dictionary<int, string>();
 
-                foreach (var at in allStatuses) statuses.Add(at.EmploymentStatusID, at.StatusName);
+                foreach (var status in allStatuses) statuses.Add(status.EmploymentStatusID, status.StatusName);
 
                 return statuses;
             }

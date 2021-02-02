@@ -17,7 +17,7 @@ namespace API_HR.Controllers
         {
             using (HREntities db = new HREntities())
             {
-                employees = db.Employees.ToList<Employees>();
+                employees = db.Employees.ToList();
             }
         }
 
@@ -215,7 +215,6 @@ namespace API_HR.Controllers
 
                     foreach (Employees empl in query)
                     {
-                        //empl.EmployeeID = employee.EmployeeID;
                         empl.FirstName = employee.FirstName;
                         empl.LastName = employee.LastName;
                         empl.OIB = employee.OIB;

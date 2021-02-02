@@ -157,6 +157,7 @@ namespace Client_HR.Forms
             this.buttonSearch.TabIndex = 71;
             this.buttonSearch.Text = "Get by ID:";
             this.buttonSearch.UseVisualStyleBackColor = true;
+            this.buttonSearch.Click += new System.EventHandler(this.buttonSearch_Click_1);
             // 
             // dgDepartmentByid
             // 
